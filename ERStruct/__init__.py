@@ -1,2 +1,1 @@
-from main import ER
-
+from ERStruct.TopPCs import erstruct

@@ -1,0 +1,12 @@
+README.md
+setup.cfg
+setup.py
+ERStruct/Eigens.py
+ERStruct/GOE.py
+ERStruct/TopPCs.py
+ERStruct/__init__.py
+ERStruct.egg-info/PKG-INFO
+ERStruct.egg-info/SOURCES.txt
+ERStruct.egg-info/dependency_links.txt
+ERStruct.egg-info/requires.txt
+ERStruct.egg-info/top_level.txt

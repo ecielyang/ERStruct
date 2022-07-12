@@ -1,3 +1,19 @@
+Metadata-Version: 2.1
+Name: ERStruct
+Version: 0.0.13
+Summary: Determine number of principle components based on sequencing data
+Home-page: https://github.com/ecielyang/ERStruct
+Author: Yang Jinghan
+Author-email: <eciel@connect.hku.hk>
+License: MIT
+Keywords: Population structure,Principal component,Random matrix theory,Sequencing data,Spectral analysis
+Platform: UNKNOWN
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Description-Content-Type: text/markdown
+
+
 # ERstruct - Official Python Implementation
 
 A Python package for inferring the number of top informative PCs that capture population structure based on genotype information.
@@ -14,3 +30,4 @@ ERStruct(2504, '.', ["test_chr21","test_chr22"], 10000, 1e-4)
 ## Other Details
 Please refer to our paper
 > *An Eigenvalue Ratio Approach to Inferring Population Structure from Whole Genome Sequencing Data*.
+
