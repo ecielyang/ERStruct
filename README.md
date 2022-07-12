@@ -20,7 +20,7 @@ from ERStruct import erstruct
 ```
 ## Parameters
 ```
-erstruct( n, path, filename, rep, alpha, cpu_num=1, device_idx="cpu", varm=1, Kc=-1)))
+erstruct(n, path, filename, rep, alpha, cpu_num=1, device_idx="cpu", varm=1, Kc=-1)
 ```
 
 **n** *(int)* - total number of individuals in the study
