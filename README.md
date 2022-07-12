@@ -25,19 +25,19 @@ erstruct(n, path, filename, rep, alpha, cpu_num=1, device_idx="cpu", varm=1, Kc=
 
 **n** *(int)* - total number of individuals in the study
 
-**path** *(str)* - The path of data file(s)
+**path** *(str)* - the path of data file(s)
 
-**filename** *(list)*: The name of the data file(s)
+**filename** *(list)* - the name of the data file(s)
 
-**rep** *(int)*: Number of simulation times for the null distribution
+**rep** *(int)* - number of simulation times for the null distribution
 
-**alpha** *(float)*: Significance level, can be either a scaler or a vector
+**alpha** *(float)* - significance level, can be either a scaler or a vector
 
-**Kc** *(int)*: A coarse estimate of the top PCs number (set to `-1` by default)
+**Kc** *(int)* - a coarse estimate of the top PCs number (set to `-1` by default)
 
-**core_num** *(int)*: Optional, number of CPU cores to be used for parallel computing. The default is 1
+**core_num** *(int)* - optional, number of CPU cores to be used for parallel computing. (set to `1` by default)
 
-**device_idx** *(str)*: "cpu" pr "gpu". The default is "cpu".
+**device_idx** *(str)*: "cpu" pr "gpu". (set to `"cpu"` by default)
 
 **varm** *(iny)*: Allocated memory (in bytes) of GPUs for computing. When device_idx="cpu", varm should be specified clearly.
 
