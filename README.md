@@ -37,9 +37,9 @@ erstruct(n, path, filename, rep, alpha, cpu_num=1, device_idx="cpu", varm=1, Kc=
 
 **core_num** *(int)* - optional, number of CPU cores to be used for parallel computing. (set to `1` by default)
 
-**device_idx** *(str)*: "cpu" pr "gpu". (set to `"cpu"` by default)
+**device_idx** *(str)* - device you are using, "cpu" pr "gpu". (set to `"cpu"` by default)
 
-**varm** *(iny)*: Allocated memory (in bytes) of GPUs for computing. When device_idx="cpu", varm should be specified clearly.
+**varm** *(int)*: - Allocated memory (in bytes) of GPUs for computing. When device_idx="gpu", varm should be specified clearly, otherwise memory allocation error may occur.
 
 ## Examples
 Run the code on CPUs:
