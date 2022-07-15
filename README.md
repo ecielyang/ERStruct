@@ -57,6 +57,6 @@ Example data files `test_chr21.npy` and `test_chr22.npy` can be found on the "sa
 
 
 
-## Other Details
-Please refer to our paper
+## References
+Please refer to the paper
 > *An Eigenvalue Ratio Approach to Inferring Population Structure from Whole Genome Sequencing Data*.
