@@ -49,7 +49,7 @@ K = test.run()
 ```
 Run the code on GPUs:
 ```commandline
-test = erstruct(2504, '.', ['test_chr21', 'test_chr22'], 5000, 1e-4, device_idx="gpu", varm=12000000000)
+test = erstruct(2504, '.', ['test_chr21', 'test_chr22'], 5000, 1e-4, cpu_num=1, device_idx="gpu", varm=12000000000)
 K = test.run()
 ```
 Example data files `test_chr21.npy` and `test_chr22.npy` can be found on the "sample_data" of [ERStruct GitHub repository](https://github.com/ecielyang/ERStruct).
