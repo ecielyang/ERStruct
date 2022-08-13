@@ -5,6 +5,10 @@ A Python package for inferring the number of top informative PCs that capture po
 ## Requirements for Data File
 Data files must be of .npy format. The data matrix must with 0,1,2 and/or NaN (for missing values) entries only, the rows represent individuals and columns represent markers. If there are more than one data files, the data matrix inside must with the same number of rows.
 
+You can Load data from a VCF (variant call format) file into numpy arrays by vcfnp https://pypi.org/project/vcfnp/
+You can Load data from a PLINK binary file format file into numpy arrays by Pandas-plink https://pypi.org/project/pandas-plink/
+
+
 ## Dependencies
 ERStruct depends on `numpy`, `torch` and `joblib`.
 
