@@ -48,7 +48,6 @@ class erstruct:
         if self.Kc == -1:
             Kc = int(np.floor(self.n / 10))
 
-        print("Simulating...")
         GOE_L12_dist = GOE_L12_sim(self.n, self.rep, self.cpu_num)
 
         print('Testing...')
@@ -84,5 +83,3 @@ class erstruct:
         return K_hat
 
 
-
-ERStruct(2504, '.', ["test12"], 1, 1e-4)

@@ -10,32 +10,31 @@ import torch
 
 def Eigens_cpu(n, path, filename):
     p = 0
-    X = torch.zeros((n, n))
+    X = np.zeros((n, n))
 
     for i in range(len(filename)):
         print('Processing file ', i + 1)
 
         # Read npy file
         dataset = np.load(path + str(filename[i]) + ".npy")
-        dataset = torch.from_numpy(dataset)
 
-        mu = torch.nanmean(dataset, 0)
-        mu = torch.reshape(mu, (1, dataset.shape[1]))
+        mu = np.nanmean(dataset, 0)
+        mu = np.reshape(mu, (1, dataset.shape[1]))
 
-        q = (torch.nansum(dataset, 0) + 1) / (2 * n + 2)
-        q = torch.reshape(q, (1, dataset.shape[1]))
+        q = (np.nansum(dataset, 0) + 1) / (2 * n + 2)
+        q = np.reshape(q, (1, dataset.shape[1]))
 
         M = (dataset - mu) / np.sqrt(2 * q * (1 - q))
 
         # replace initial missing data and the NaN caused by deviding 0 mean
-        M = torch.nan_to_num(M, nan=0)
+        M = np.nan_to_num(M, nan=0)
         p_i = max(M.shape)
         X = X + M @ M.T
         p = p + p_i
 
     X = 1 / p * X
-    eigenvalues = torch.linalg.eigvalsh(X)
-    eigens = torch.sort(eigenvalues, descending=True)
+    eigenvalues = LA.eigvalsh(X)
+    eigens = np.sort(eigenvalues)[::-1]
 
     return eigens, p
 
@@ -75,6 +74,7 @@ def Eigens_gpu(n, VRAM_available, path0, filename, device):
         else:
             # Split data
             split_num = np.ceil(dataset_size / max_memo)
+            print("Split array", i , "to", split_num, "arrays")
             files = np.array_split(dataset, split_num, axis=1)
             del dataset
 
