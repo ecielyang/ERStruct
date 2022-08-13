@@ -84,5 +84,3 @@ class erstruct:
         return K_hat
 
 
-
-ERStruct(2504, '.', ["test12"], 1, 1e-4)

@@ -4,7 +4,6 @@ os.environ["NUMEXPR_NUM_THREADS"] = "1"
 os.environ["OMP_NUM_THREADS"] = "1"
 
 import numpy as np
-from numpy import linalg as LA
 import torch
 
 
@@ -35,7 +34,8 @@ def Eigens_cpu(n, path, filename):
 
     X = 1 / p * X
     eigenvalues = torch.linalg.eigvalsh(X)
-    eigens = torch.sort(eigenvalues, descending=True)
+    eigens, _ = torch.sort(eigenvalues, descending=True)
+    eigens = eigens.detach().numpy()
 
     return eigens, p
 
