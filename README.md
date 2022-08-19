@@ -5,8 +5,25 @@ A Python package for inferring the number of top informative PCs that capture po
 ## Requirements for Data File
 Data files must be of .npy format. The data matrix must with 0,1,2 and/or NaN (for missing values) entries only, the rows represent individuals and columns represent markers. If there are more than one data files, the data matrix inside must with the same number of rows.
 
-You can Load data from a VCF (variant call format) file into numpy arrays by vcfnp https://pypi.org/project/vcfnp/
-You can Load data from a PLINK binary file format file into numpy arrays by Pandas-plink https://pypi.org/project/pandas-plink/
+You can Load data from a VCF (variant call format) file into numpy arrays by vcfnp (install via https://pypi.org/project/vcfnp/), example:
+```
+import vcfnp
+filename = './sample.vcf' #load file in current directory
+v = vcfnp.variants(filename, cache=True).view(np.recarray)
+```
+
+You can Load data from a PLINK binary file format file into numpy arrays by Pandas-plink (install via https://pypi.org/project/pandas-plink/), example:
+```
+# read files
+from pandas_plink import read_plink1_bin
+G = read_plink1_bin("chr11.bed", "chr11.bim", "chr11.fam", verbose=False) 
+
+# read covariance matrices
+from pandas_plink import read_rel
+cov = read_rel("plink2.rel.bin")
+# load the matirx value
+cov_value = cov.values
+```
 
 
 ## Dependencies
