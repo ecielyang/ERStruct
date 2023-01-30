@@ -80,6 +80,8 @@ Example data files `test_chr21.npy` and `test_chr22.npy` can be found on the "sa
 
 ## Other Details
 Please refer to our paper
+> \url{https://www.biorxiv.org/content/10.1101/2022.08.15.503962v2}
+For the algorithm:
 > *An Eigenvalue Ratio Approach to Inferring Population Structure from Whole Genome Sequencing Data*.
 
 If you have any question, please contact the email eciel@connect.hku.hk.
