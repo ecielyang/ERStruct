@@ -23,8 +23,6 @@ erstruct(n, path, rep, alpha, cpu_num=1, device_idx="cpu", varm=1, Kc=-1)
 
 **path** *(str)* - the path of data file(s)
 
-**filename** *(list)* - the name of the data file(s)
-
 **rep** *(int)* - number of simulation times for the null distribution
 
 **alpha** *(float)* - significance level, can be either a scaler or a vector
