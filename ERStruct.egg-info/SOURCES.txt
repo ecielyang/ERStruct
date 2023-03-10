@@ -1,3 +1,4 @@
+MANIFEST.in
 README.md
 setup.cfg
 setup.py
@@ -10,3 +11,5 @@ ERStruct.egg-info/SOURCES.txt
 ERStruct.egg-info/dependency_links.txt
 ERStruct.egg-info/requires.txt
 ERStruct.egg-info/top_level.txt
+ERStruct/data/chr21.npy
+ERStruct/data/chr22.npy

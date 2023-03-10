@@ -7,15 +7,15 @@ import numpy as np
 import torch
 
 
-def Eigens_cpu(n, path, filename):
+def Eigens_cpu(n, path):
     p = 0
     X = torch.zeros((n, n))
 
-    for i in range(len(filename)):
+    for i in range(len(path)):
         print('Processing file ', i + 1)
 
         # Read npy file
-        dataset = np.load(path + str(filename[i]) + ".npy")
+        dataset = np.load(str(path[i]))
         dataset = torch.from_numpy(dataset)
 
         mu = torch.nanmean(dataset, 0)
@@ -40,16 +40,16 @@ def Eigens_cpu(n, path, filename):
     return eigens, p
 
 
-def Eigens_gpu(n, VRAM_available, path0, filename, device):
+def Eigens_gpu(n, VRAM_available, path, device):
     device_num = 4.3
     max_memo = VRAM_available / device_num
     p = 0
     X = torch.zeros((n, n)).to(device)
 
-    for i in range(len(filename)):
+    for i in range(len(path)):
         print('Processing file ', i + 1)
-        file_path = path0 + str(filename[i]) + ".npy"
-        dataset = np.load(file_path)
+        # Read npy file
+        dataset = np.load(str(path[i]))
         dataset_size = dataset.size * dataset.itemsize
 
         if dataset_size < max_memo:

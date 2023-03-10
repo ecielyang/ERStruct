@@ -14,7 +14,7 @@ LONG_DESCRIPTION = 'A package that determines the number of top informative prin
 # Setting up
 setup(
     name="ERStruct",
-    version='0.1.3',
+    version='0.1.24',
     license='MIT',
     author="Jinghan Yang",
     author_email="<eciel@connect.hku.hk>",
@@ -29,5 +29,8 @@ setup(
         'Intended Audience :: Science/Research',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3',
-    ]
+    ],
+    package_data={
+        'ERStruct': ['data/*']
+    },
 )

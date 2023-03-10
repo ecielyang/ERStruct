@@ -8,6 +8,7 @@ import numpy as np
 import torch
 from ERStruct.Eigens import Eigens_cpu,Eigens_gpu
 from ERStruct.GOE import GOE_L12_sim
+import pkg_resources
 
 class erstruct:
 
@@ -19,12 +20,13 @@ class erstruct:
     # Kc: A coarse estimate of the top PCs number (set to `floor(n/10)` by default)
     # core_num: Optional, number of CPU cores to be used for parallel computing. The default is 1
     # device_idx: "cpu" pr "gpu". The default is "cpu".
-    # varm: Allocated memory (in bytes) of GPUs for computing. When device_idx="cpu", varm should be specified clearly.
+    # varm: Allocated memory (in bytes) of GPUs for computing. When device_idx is set to "gpu", the varm parameter can
+    # be specified to increase the computational speed by allocating the required amount of memory (in bytes) to
+    # the GPU.  (set to 2e+8 by default)
 
-    def __init__(self, n, path, filename, rep, alpha, cpu_num=1, device_idx="cpu", varm=1, Kc=-1):
+    def __init__(self, n, path, rep, alpha, cpu_num=1, device_idx="cpu", varm=2e8, Kc=-1):
         self.n = n
         self.path = path
-        self.filename = filename
         self.rep = rep
         self.alpha = alpha
         self.cpu_num = cpu_num
@@ -32,18 +34,16 @@ class erstruct:
         self.varm = varm
         self.Kc = Kc
 
-
-
     def run(self):
         # Return : K_hat-Estimated number of top PCs
         if self.device_idx == 'cpu':
-            eigens, p = Eigens_cpu(self.n, self.path, self.filename)
+            eigens, p = Eigens_cpu(self.n, self.path)
         else:
             device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
             if device == "cpu":
                 print("No GPU detected, run on cpu...")
             else:
-                eigens, p = Eigens_gpu(self.n, self.varm, self.path, self.filename, device)
+                eigens, p = Eigens_gpu(self.n, self.varm, self.path, device)
 
         if self.Kc == -1:
             Kc = int(np.floor(self.n / 10))
@@ -82,5 +82,16 @@ class erstruct:
             print('Cannot find valid K_hat <= Kc')
         print("K_hat is ", K_hat)
         return K_hat
+
+
+def download_sample():
+    data1_path = pkg_resources.resource_filename("ERStruct", 'data/chr21.npy')
+    data2_path = pkg_resources.resource_filename("ERStruct", 'data/chr22.npy')
+
+    data1 = np.load(data1_path)
+    data2 = np.load(data2_path)
+    np.save('chr21.npy', data1)
+    np.save('chr22.npy', data2)
+    print('Sample data \"chr21.npy\" and \"chr22.npy\" are saved in the current directory')
 
 
