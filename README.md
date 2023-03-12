@@ -36,28 +36,28 @@ erstruct(n, path, rep, alpha, cpu_num=1, device_idx="cpu", varm=2e8, Kc=-1)
 **varm** *(int)*: - Allocated memory (in bytes) of GPUs for computing. When device_idx is set to "gpu", the varm parameter can be specified to increase the computational speed by allocating the required amount of memory (in bytes) to the GPU.  (set to `2e+8` by default)
 
 ## Examples
-Download sample dataset:
-```angular2html
-from ERStruct import download_sample
-download_sample()
-```
 Import ERStruct algorithm
 ```
 from ERStruct import erstruct
 ```
+
+Download sample dataset (the dataset consists of chromosome 21 and chromosome 22 information for 500 individuals obtained 
+    from sequencing data of the 1000 Genomes Project.):
+```angular2html
+from ERStruct import download_sample
+download_sample()
+```
+
 Run ERStruct algorithm on sample dataset with CPUs:
 ```commandline
 test = erstruct(500, ['chr21.npy', 'chr22.npy'], 1000, 5e-3, cpu_num=1, device_idx="cpu")
 K = test.run()
 ```
-Run ERStruct algorithm on sample dataset with GPUs (the dataset consists of chromosome 21 and chromosome 22 information for 500 individuals obtained 
-    from sequencing data of the 1000 Genomes Project.):
+Run ERStruct algorithm on sample dataset with GPUs:
 ```commandline
 test = erstruct(500, ['chr21.npy', 'chr22.npy'], 1000, 5e-3, device_idx="gpu", varm=2e8)
 K = test.run()
 ```
-Example data files `test_chr21.npy` and `test_chr22.npy` can be found on the "sample_data" of [ERStruct GitHub repository](https://github.com/ecielyang/ERStruct).
-
 
 
 ## Other Details
