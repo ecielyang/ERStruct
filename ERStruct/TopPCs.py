@@ -24,7 +24,7 @@ class erstruct:
     # be specified to increase the computational speed by allocating the required amount of memory (in bytes) to
     # the GPU.  (set to 2e+8 by default)
 
-    def __init__(self, n, path, rep, alpha, cpu_num=1, device_idx="cpu", varm=2e8, Kc=-1):
+    def __init__(self, n, path, rep=5000, alpha=1e-3, cpu_num=1, device_idx="cpu", varm=2e8, Kc=-1):
         self.n = n
         self.path = path
         self.rep = rep
@@ -85,6 +85,10 @@ class erstruct:
 
 
 def download_sample():
+    """
+    The dataset consists of chromosome 21 and chromosome 22 information for 500 individuals obtained
+    from sequencing data of the 1000 Genomes Project.
+    """
     data1_path = pkg_resources.resource_filename("ERStruct", 'data/chr21.npy')
     data2_path = pkg_resources.resource_filename("ERStruct", 'data/chr22.npy')
 
