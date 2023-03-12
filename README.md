@@ -16,24 +16,24 @@ pip install ERStruct
 
 ## Parameters
 ```
-erstruct(n, path, rep, alpha, cpu_num=1, device_idx="cpu", varm=1, Kc=-1)
+erstruct(n, path, rep, alpha, cpu_num=1, device_idx="cpu", varm=2e8, Kc=-1)
 ```
 
 **n** *(int)* - total number of individuals in the study
 
 **path** *(str)* - the path of data file(s)
 
-**rep** *(int)* - number of simulation times for the null distribution
+**rep** *(int)* - number of simulation times for the null distribution (set to `5000` by default). We recommend to use `rep` between `2/alpha` and `5/alpha`.
 
-**alpha** *(float)* - significance level, can be either a scaler or a vector
+**alpha** *(float)* - significance level, can be either a scaler or a vector (set to `1e-3` by default)
 
-**Kc** *(int)* - a coarse estimate of the top PCs number (set to `-1` by default)
+**Kc** *(int)* - a coarse estimate of the top PCs number (set to `-1` by default, denoting `Kc = floor(n/10)` when the algorithm running)
 
 **cpu_num** *(int)* - optional, number of CPU cores to be used for parallel computing. (set to `1` by default)
 
 **device_idx** *(str)* - device you are using, "cpu" pr "gpu". (set to `"cpu"` by default)
 
-**varm** *(int)*: - Allocated memory (in bytes) of GPUs for computing. When device_idx is set to "gpu", the varm parameter can be specified to increase the computational speed by allocating the required amount of memory (in bytes) to the GPU.  (set to 2e+8 by default)
+**varm** *(int)*: - Allocated memory (in bytes) of GPUs for computing. When device_idx is set to "gpu", the varm parameter can be specified to increase the computational speed by allocating the required amount of memory (in bytes) to the GPU.  (set to `2e+8` by default)
 
 ## Examples
 Download sample dataset:
@@ -47,12 +47,13 @@ from ERStruct import erstruct
 ```
 Run ERStruct algorithm on sample dataset with CPUs:
 ```commandline
-test = erstruct(500, ['chr21.npy', 'chr22.npy'], 1000, 1e-4, cpu_num=1, device_idx="cpu")
+test = erstruct(500, ['chr21.npy', 'chr22.npy'], 1000, 5e-3, cpu_num=1, device_idx="cpu")
 K = test.run()
 ```
-Run ERStruct algorithm on sample dataset with GPUs:
+Run ERStruct algorithm on sample dataset with GPUs (the dataset consists of chromosome 21 and chromosome 22 information for 500 individuals obtained 
+    from sequencing data of the 1000 Genomes Project.):
 ```commandline
-test = erstruct(500, ['chr21.npy', 'chr22.npy'], 1000, 1e-4, device_idx="gpu", varm=2e8)
+test = erstruct(500, ['chr21.npy', 'chr22.npy'], 1000, 5e-3, device_idx="gpu", varm=2e8)
 K = test.run()
 ```
 Example data files `test_chr21.npy` and `test_chr22.npy` can be found on the "sample_data" of [ERStruct GitHub repository](https://github.com/ecielyang/ERStruct).
