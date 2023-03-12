@@ -23,7 +23,7 @@ erstruct(n, path, rep, alpha, cpu_num=1, device_idx="cpu", varm=2e8, Kc=-1)
 
 **path** *(str)* - the path of data file(s)
 
-**rep** *(int)* - number of simulation times for the null distribution (set to `5000` by default). We recommend to use `rep` between `2/alpha` and `5/alpha`.
+**rep** *(int)* - number of simulation times for the null distribution (set to `5000` by default). We recommend to use `rep` between `2/alpha` and `5/alpha`
 
 **alpha** *(float)* - significance level, can be either a scaler or a vector (set to `1e-3` by default)
 
