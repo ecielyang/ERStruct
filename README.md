@@ -3,10 +3,12 @@
 A Python package for inferring the number of top informative PCs that capture population structure based on genotype information.
 
 ## Requirements for Data File
-Data files must be of numpy array `.npy` format. The data matrix must with 0,1,2 and/or NaN (for missing values) entries only, the rows represent individuals and columns represent markers. If there are more than one data files, the data matrix inside must with the same number of rows.
+1. Data files must be of numpy array `.npy` format. Users can convert VCF (variant call format) file in to numpy array via `vcfnp` package： https://pypi.org/project/vcfnp/, and convert bgen  file in to numpy array via `bgen-reader` package： https://pypi.org/project/bgen-reader/.
+2. The data matrix must with 0,1,2 and/or NaN (for missing values) entries only. Noting that our package imputes all the missing data (NaN) by 0. Users may perform other types of imputations beforehand.
+3. The rows represent individuals and columns represent markers. If there are more than one data files, the data matrix inside must with the same number of rows.
 
-Users can convert VCF (variant call format) file in to numpy array via `vcfnp` package： https://pypi.org/project/vcfnp/.
-Users can convert bgen  file in to numpy array via `bgen-reader` package： https://pypi.org/project/bgen-reader/.
+
+
 
 ## Dependencies
 ERStruct depends on `numpy`, `torch` and `joblib`.
