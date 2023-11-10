@@ -14,7 +14,7 @@ LONG_DESCRIPTION = 'A package that determines the number of top informative prin
 # Setting up
 setup(
     name="ERStruct",
-    version='0.1.24',
+    version='0.2.1',
     license='MIT',
     author="Jinghan Yang",
     author_email="<eciel@connect.hku.hk>",

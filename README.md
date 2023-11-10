@@ -1,0 +1,75 @@
+# ERstruct - Official Python Implementation
+
+A Python package for inferring the number of top informative PCs that capture population structure based on genotype information.
+
+## Requirements for Data File
+1. Data files must be of numpy array `.npy` format. Users can convert VCF (variant call format) file in to numpy array via `vcfnp` package： https://pypi.org/project/vcfnp/, and convert bgen  file in to numpy array via `bgen-reader` package： https://pypi.org/project/bgen-reader/.
+2. The data matrix must with 0,1,2 and/or NaN (for missing values) entries only. Noting that our package imputes all the missing data (NaN) by 0. Users may perform other types of imputations beforehand.
+3. The rows represent individuals and columns represent markers. If there are more than one data files, the data matrix inside must with the same number of rows.
+
+
+
+
+## Dependencies
+ERStruct depends on `numpy`, `torch` and `joblib`.
+
+## Installation
+Users can install `ERStruct` by running the command below in command line:
+```commandline
+pip install ERStruct
+```
+
+## Parameters
+```
+erstruct(n, path, rep, alpha, cpu_num=1, device_idx="cpu", varm=2e8, Kc=-1)
+```
+
+**n** *(int)* - total number of individuals in the study
+
+**path** *(str)* - the path of data file(s)
+
+**rep** *(int)* - number of simulation times for the null distribution (set to `5000` by default). We recommend to use `rep` between `2/alpha` and `5/alpha`.
+
+**alpha** *(float)* - significance level, can be either a scaler or a vector (set to `1e-3` by default)
+
+**Kc** *(int)* - a coarse estimate of the top PCs number (set to `-1` by default, denoting `Kc = floor(n/10)` when the algorithm running)
+
+**cpu_num** *(int)* - optional, number of CPU cores to be used for parallel computing. (set to `1` by default)
+
+**device_idx** *(str)* - device you are using, "cpu" pr "gpu". (set to `"cpu"` by default)
+
+**varm** *(int)*: - Allocated memory (in bytes) of GPUs for computing. When device_idx is set to "gpu", the varm parameter can be specified to increase the computational speed by allocating the required amount of memory (in bytes) to the GPU.  (set to `2e+8` by default)
+
+## Examples
+Import ERStruct algorithm
+```
+from ERStruct import erstruct
+```
+
+Download sample dataset (the dataset consists of chromosome 21 and chromosome 22 information for 500 individuals obtained 
+    from sequencing data of the 1000 Genomes Project.):
+```angular2html
+from ERStruct import download_sample
+download_sample()
+```
+
+Run ERStruct algorithm on sample dataset with CPUs:
+```commandline
+test = erstruct(500, ['chr21.npy', 'chr22.npy'], 1000, 5e-3, cpu_num=1, device_idx="cpu")
+K = test.run()
+```
+Run ERStruct algorithm on sample dataset with GPUs:
+```commandline
+test = erstruct(500, ['chr21.npy', 'chr22.npy'], 1000, 5e-3, device_idx="gpu", varm=2e8)
+K = test.run()
+```
+
+
+## Other Details
+Please refer to our paper
+> [ERStruct: A Python Package for Inferring the Number of Top Principal Components from Whole Genome Sequencing Data](https://www.biorxiv.org/content/10.1101/2022.08.15.503962v2)
+
+For details of the ERStruct algorithm:
+> [ERStruct: An Eigenvalue Ratio Approach to Inferring Population Structure from Sequencing Data](https://www.researchgate.net/publication/350647012_ERStruct_An_Eigenvalue_Ratio_Approach_to_Inferring_Population_Structure_from_Sequencing_Data)
+
+If you have any question, please contact the email eciel@connect.hku.hk.
