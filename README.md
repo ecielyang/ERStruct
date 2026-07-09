@@ -2,7 +2,7 @@
 
 **ERStruct** is a Python package for inferring the number of top informative principal components (PCs) that capture population structure from whole-genome sequencing genotype data. It implements an eigenvalue-ratio approach designed to handle the ultra-high dimensionality and linkage disequilibrium of modern sequencing datasets, with support for parallel CPU computing and GPU acceleration for large-scale matrix operations.
 
-> 📄 **Reference:** Yang, J., Xu, Y., & Liu, Z. *ERStruct: A Python Package for Inferring the Number of Top Principal Components from Whole Genome Sequencing Data.* bioRxiv, 2022. https://doi.org/10.1101/2022.08.15.503962
+> 📄 **Reference:** Yang, J., Xu, Y., Yao, M., Wang, G., & Liu, Z. *ERStruct: a fast Python package for inferring the number of top principal components from whole genome sequencing data.* BMC Bioinformatics 24, 180 (2023). https://doi.org/10.1186/s12859-023-05305-0
 
 ## Installation
 
@@ -74,9 +74,24 @@ K = test.run()
 
 ## Further Reading
 
-- **Package:** [ERStruct: A Python Package for Inferring the Number of Top Principal Components from Whole Genome Sequencing Data](https://www.biorxiv.org/content/10.1101/2022.08.15.503962v2)
+- **Package:** [ERStruct: a fast Python package for inferring the number of top principal components from whole genome sequencing data](https://doi.org/10.1186/s12859-023-05305-0) (BMC Bioinformatics, 2023)
 - **Method:** [ERStruct: An Eigenvalue Ratio Approach to Inferring Population Structure from Sequencing Data](https://www.researchgate.net/publication/350647012_ERStruct_An_Eigenvalue_Ratio_Approach_to_Inferring_Population_Structure_from_Sequencing_Data)
 
 ## Contact
 
 For questions, please contact **eciel@connect.hku.hk**.
+
+## Citation
+
+If you use ERStruct in your research, please cite:
+
+```bibtex
+@article{yang2022erstruct,
+  title={ERStruct: A Python Package for Inferring the Number of Top Principal Components from Whole Genome Sequencing Data},
+  author={Yang, Jinghan and Xu, Yuyang and Yao, Minhao and Wang, Gao and Liu, Zhonghua},
+  journal={bioRxiv},
+  pages={2022--08},
+  year={2022},
+  publisher={Cold Spring Harbor Laboratory}
+}
+```
