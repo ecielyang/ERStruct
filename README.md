@@ -1,5 +1,3 @@
-Let me look at the paper first to describe the method accurately.Here's a polished, more professional version of the README.
-
 # ERStruct — Official Python Implementation
 
 **ERStruct** is a Python package for inferring the number of top informative principal components (PCs) that capture population structure from whole-genome sequencing genotype data. It implements an eigenvalue-ratio approach designed to handle the ultra-high dimensionality and linkage disequilibrium of modern sequencing datasets, with support for parallel CPU computing and GPU acceleration for large-scale matrix operations.
